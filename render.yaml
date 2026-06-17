@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: tmdb-metadata-plus
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /manifest.json
+    envVars:
+      - key: TMDB_API_KEY
+        sync: false          # Set manually in Render dashboard
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 7000
